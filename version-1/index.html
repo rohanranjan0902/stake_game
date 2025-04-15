@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width,initial-scale=1.0">
+    <title>
+        Canvas Game
+    </title>
+    <style>
+        canvas{
+            background-color: #000;
+        }
+        #add-ball{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #0f0;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="gamecanvas" width="800" height="800"></canvas>
+    <div id="add-ball">Add Balls</div>
+    <script>
+        const canvas = document.getElementById('gamecanvas');
+        const ctx = canvas.getContext('2d');
+        const DECIMAL_MULTIPLIER= 10000;
+
+        const WIDHT= 800;
+        const HEIGHT=800;
+
+        const ballRadius = 7;
+        const gravity = pad(0.2);
+        const horizontalfrinction = 0.4;
+        const verticalfriction = 0.8;
+
+        let balls =[];
+        const obstracles =[];
+
+        const sinks =[];
+
+        function pad(n){
+            return n*DECIMAL_MULTIPLIER;
+        }
+
+        function unpad(n){
+            return Math.floor(n/DECIMAL_MULTIPLIER);
+        }
+
+        //create obstracle in a pyramid shape
+        const rows = 16;
+        for(let rows =2 ; row< rows ; row++){
+            const numobstracle = row+1;
+            const y = 0+ row *35;
+
+            const spacing = 36;
+            for(let col = 0; col < numobstracle ; col++){
+                const x = WIDHT /2 -spacing * (row/2 -col);
+                obstracles.push({x:pad(x), y:pad(y),
+                    radius : obstracleRadius});
+                
+            }
+        }
+
+    </script>
+</body>
